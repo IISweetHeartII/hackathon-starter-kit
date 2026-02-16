@@ -3,8 +3,8 @@
 set -euo pipefail
 
 usage() {
-  echo "Usage: bash scripts/bootstrap.sh <project-name> [--backend spring|nest|fastapi]"
-  echo "Example: bash scripts/bootstrap.sh 2026-chungryongthon-404 --backend fastapi"
+  echo "Usage: bash scripts/bootstrap.sh <project-name> [--frontend next|vite|expo] [--backend spring|nest|fastapi]"
+  echo "Example: bash scripts/bootstrap.sh 2026-chungryongthon-404 --frontend vite --backend fastapi"
 }
 
 if [[ $# -lt 1 ]]; then
@@ -16,6 +16,7 @@ PROJECT_NAME="$1"
 shift
 
 BACKEND="spring"
+FRONTEND="next"
 
 while [[ $# -gt 0 ]]; do
   case "$1" in
@@ -26,6 +27,15 @@ while [[ $# -gt 0 ]]; do
         exit 1
       fi
       BACKEND="$2"
+      shift 2
+      ;;
+    --frontend)
+      if [[ $# -lt 2 ]]; then
+        echo "Missing value for --frontend"
+        usage
+        exit 1
+      fi
+      FRONTEND="$2"
       shift 2
       ;;
     *)
@@ -46,6 +56,12 @@ if [[ "$BACKEND" != "spring" && "$BACKEND" != "nest" && "$BACKEND" != "fastapi" 
   exit 1
 fi
 
+if [[ "$FRONTEND" != "next" && "$FRONTEND" != "vite" && "$FRONTEND" != "expo" ]]; then
+  echo "Invalid frontend: $FRONTEND"
+  echo "Allowed values: next, vite, expo"
+  exit 1
+fi
+
 TARGET_DIR="/home/sweetheart/projects/$PROJECT_NAME"
 
 if [[ -e "$TARGET_DIR" ]]; then
@@ -55,12 +71,12 @@ fi
 
 mkdir -p "$TARGET_DIR/frontend" "$TARGET_DIR/backend" "$TARGET_DIR/ai" "$TARGET_DIR/docs"
 
-cp -r templates/next/. "$TARGET_DIR/frontend/"
+cp -r "templates/$FRONTEND/." "$TARGET_DIR/frontend/"
 cp -r "templates/$BACKEND/." "$TARGET_DIR/backend/"
 cp -r templates/ai/. "$TARGET_DIR/ai/"
 cp docs/checklists/demo-day.md "$TARGET_DIR/docs/demo-day-checklist.md"
 cp docs/playbook.md "$TARGET_DIR/docs/hackathon-playbook.md"
 
 echo "Created project scaffold: $TARGET_DIR"
-echo "Frontend template: next"
+echo "Frontend template: $FRONTEND"
 echo "Backend template: $BACKEND"
