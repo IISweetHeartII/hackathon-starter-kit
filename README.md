@@ -1,6 +1,6 @@
 # hackathon-starter-kit
 
-Reusable starter structure for my hackathon projects.
+Reusable starter structure for my hackathon projects (Next.js + Spring/Nest + AI).
 
 ## Goal
 
@@ -10,8 +10,9 @@ Reusable starter structure for my hackathon projects.
 
 ## Structure
 
-- `templates/frontend/` - Frontend starter notes and TODOs
-- `templates/backend/` - Backend starter notes and TODOs
+- `templates/next/` - Next.js-focused frontend checklist and conventions
+- `templates/spring/` - Spring Boot backend checklist and conventions
+- `templates/nest/` - NestJS backend checklist and conventions
 - `templates/ai/` - AI feature integration starter notes
 - `docs/checklists/` - Pre-launch and demo-day checklists
 - `docs/playbook.md` - End-to-end hackathon execution playbook
@@ -20,15 +21,19 @@ Reusable starter structure for my hackathon projects.
 ## Usage
 
 ```bash
-bash scripts/bootstrap.sh 2026-chungryongthon-team404
+# default: next + spring + ai
+bash scripts/bootstrap.sh 2026-chungryongthon-404
+
+# next + nest + ai
+bash scripts/bootstrap.sh 2026-umc10-teamx --backend nest
 ```
 
 This creates:
 
-- `projects/2026-chungryongthon-team404/frontend`
-- `projects/2026-chungryongthon-team404/backend`
-- `projects/2026-chungryongthon-team404/ai`
-- `projects/2026-chungryongthon-team404/docs`
+- `projects/<project-name>/frontend`
+- `projects/<project-name>/backend`
+- `projects/<project-name>/ai`
+- `projects/<project-name>/docs`
 
 ## Naming Rule
 
@@ -38,3 +43,16 @@ Examples:
 
 - `2026-umc9-team4`
 - `2026-chungryongthon-404`
+
+## Open Source and Org Usage
+
+- You can keep this repository on your personal account and still generate repositories under any org.
+- If this repository is marked as a template, you can create new project repos from GitHub UI or CLI.
+
+Example:
+
+```bash
+gh repo create "umc9-hackathon-team4/2026-umc10-teamx" \
+  --private \
+  --template "IISweetHeartII/hackathon-starter-kit"
+```
