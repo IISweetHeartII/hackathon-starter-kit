@@ -1,0 +1,19 @@
+from fastapi import FastAPI
+from pydantic import BaseModel
+
+
+class EchoRequest(BaseModel):
+    prompt: str
+
+
+app = FastAPI(title="Hackathon FastAPI Starter", version="0.1.0")
+
+
+@app.get("/health")
+def health() -> dict[str, str]:
+    return {"status": "ok"}
+
+
+@app.post("/ai/echo")
+def ai_echo(req: EchoRequest) -> dict[str, str]:
+    return {"response": f"Echo: {req.prompt}"}

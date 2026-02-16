@@ -3,8 +3,8 @@
 set -euo pipefail
 
 usage() {
-  echo "Usage: bash scripts/bootstrap.sh <project-name> [--backend spring|nest]"
-  echo "Example: bash scripts/bootstrap.sh 2026-chungryongthon-404 --backend spring"
+  echo "Usage: bash scripts/bootstrap.sh <project-name> [--backend spring|nest|fastapi]"
+  echo "Example: bash scripts/bootstrap.sh 2026-chungryongthon-404 --backend fastapi"
 }
 
 if [[ $# -lt 1 ]]; then
@@ -36,9 +36,13 @@ while [[ $# -gt 0 ]]; do
   esac
 done
 
-if [[ "$BACKEND" != "spring" && "$BACKEND" != "nest" ]]; then
+if [[ "$BACKEND" == "python" ]]; then
+  BACKEND="fastapi"
+fi
+
+if [[ "$BACKEND" != "spring" && "$BACKEND" != "nest" && "$BACKEND" != "fastapi" ]]; then
   echo "Invalid backend: $BACKEND"
-  echo "Allowed values: spring, nest"
+  echo "Allowed values: spring, nest, fastapi"
   exit 1
 fi
 

@@ -1,6 +1,6 @@
 # hackathon-starter-kit
 
-Reusable starter structure for my hackathon projects (Next.js + Spring/Nest + AI).
+Reusable starter structure for my hackathon projects (Next.js + Spring/Nest/FastAPI + AI).
 
 ## Goal
 
@@ -13,9 +13,12 @@ Reusable starter structure for my hackathon projects (Next.js + Spring/Nest + AI
 - `templates/next/` - Next.js-focused frontend checklist and conventions
 - `templates/spring/` - Spring Boot backend checklist and conventions
 - `templates/nest/` - NestJS backend checklist and conventions
+- `templates/fastapi/` - FastAPI backend starter files and run guide
 - `templates/ai/` - AI feature integration starter notes
 - `docs/checklists/` - Pre-launch and demo-day checklists
 - `docs/playbook.md` - End-to-end hackathon execution playbook
+- `docs/index.md` - Quick landing page for stack overview and setup
+- `stack-versions.md` - Recommended baseline versions for each stack
 - `scripts/bootstrap.sh` - Creates a new hackathon workspace scaffold
 
 ## Usage
@@ -26,6 +29,12 @@ bash scripts/bootstrap.sh 2026-chungryongthon-404
 
 # next + nest + ai
 bash scripts/bootstrap.sh 2026-umc10-teamx --backend nest
+
+# next + fastapi + ai
+bash scripts/bootstrap.sh 2026-ai-night --backend fastapi
+
+# alias also supported
+bash scripts/bootstrap.sh 2026-ai-night --backend python
 ```
 
 This creates:
@@ -34,6 +43,16 @@ This creates:
 - `projects/<project-name>/backend`
 - `projects/<project-name>/ai`
 - `projects/<project-name>/docs`
+
+## Suggested Defaults
+
+- Frontend: Next.js + TypeScript + Tailwind
+- Backend: Spring Boot, NestJS, or FastAPI
+- AI: OpenAI / Anthropic / Gemini integration with fallback mode
+- DB: Postgres/Supabase/Neon
+- Deploy: Vercel + Railway/Render/Fly
+
+See `stack-versions.md` for version recommendations.
 
 ## Naming Rule
 
@@ -56,3 +75,9 @@ gh repo create "umc9-hackathon-team4/2026-umc10-teamx" \
   --private \
   --template "IISweetHeartII/hackathon-starter-kit"
 ```
+
+## Why This Starter Exists
+
+- Fast kickoff for 24-72 hour hackathons
+- Stable demo strategy with fallback-ready AI flow
+- Reusable team operating playbook
