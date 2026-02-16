@@ -9,9 +9,9 @@ Last validated: 2026-02-16
 - Node.js: 20.x LTS
 - Next.js: 16.1.x
 - Vite: 7.3.x
-- React: 19.2.x
+- React: 19.x (Expo SDK 54 track uses 19.1.x)
 - Expo SDK: 54.0.x
-- React Native: 0.84.x
+- React Native: 0.81.x (Expo SDK 54 managed track)
 - TypeScript: 5.8+
 - Tailwind CSS: 4.x
 

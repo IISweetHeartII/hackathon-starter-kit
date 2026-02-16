@@ -3,7 +3,7 @@
 set -euo pipefail
 
 usage() {
-  echo "Usage: bash scripts/bootstrap.sh <project-name> [--frontend next|vite|expo] [--backend spring|nest|fastapi]"
+  echo "Usage: bash scripts/bootstrap.sh <project-name> [--frontend next|vite|expo] [--backend spring|nest|fastapi|python] [--output-dir <path>]"
   echo "Example: bash scripts/bootstrap.sh 2026-chungryongthon-404 --frontend vite --backend fastapi"
 }
 
@@ -17,6 +17,7 @@ shift
 
 BACKEND="spring"
 FRONTEND="next"
+BASE_DIR="${HACKATHON_BASE_DIR:-$HOME/projects}"
 
 while [[ $# -gt 0 ]]; do
   case "$1" in
@@ -36,6 +37,15 @@ while [[ $# -gt 0 ]]; do
         exit 1
       fi
       FRONTEND="$2"
+      shift 2
+      ;;
+    --output-dir)
+      if [[ $# -lt 2 ]]; then
+        echo "Missing value for --output-dir"
+        usage
+        exit 1
+      fi
+      BASE_DIR="$2"
       shift 2
       ;;
     *)
@@ -62,7 +72,7 @@ if [[ "$FRONTEND" != "next" && "$FRONTEND" != "vite" && "$FRONTEND" != "expo" ]]
   exit 1
 fi
 
-TARGET_DIR="/home/sweetheart/projects/$PROJECT_NAME"
+TARGET_DIR="$BASE_DIR/$PROJECT_NAME"
 
 if [[ -e "$TARGET_DIR" ]]; then
   echo "Target already exists: $TARGET_DIR"
@@ -80,3 +90,4 @@ cp docs/playbook.md "$TARGET_DIR/docs/hackathon-playbook.md"
 echo "Created project scaffold: $TARGET_DIR"
 echo "Frontend template: $FRONTEND"
 echo "Backend template: $BACKEND"
+echo "Base directory: $BASE_DIR"

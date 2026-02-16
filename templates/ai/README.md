@@ -12,7 +12,7 @@ Use this folder as a guide for AI feature integration.
 
 ## Suggested Baseline
 
-- Prompt versioning file (`prompts.md`)
+- Prompt versioning file (for example, `prompts.md`)
 - Guardrails and refusal handling
 - Latency timeout and retry policy
 - Example test prompts for regression checks

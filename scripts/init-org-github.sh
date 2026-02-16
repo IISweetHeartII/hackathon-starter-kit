@@ -4,7 +4,7 @@ set -euo pipefail
 
 if [[ $# -ne 1 ]]; then
   echo "Usage: bash scripts/init-org-github.sh <target-dir>"
-  echo "Example: bash scripts/init-org-github.sh /home/sweetheart/projects/org-dotgithub"
+  echo "Example: bash scripts/init-org-github.sh $HOME/projects/org-dotgithub"
   exit 1
 fi
 

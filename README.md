@@ -48,7 +48,10 @@ bash scripts/bootstrap.sh 2026-ai-night --backend fastapi
 bash scripts/bootstrap.sh 2026-ai-night --backend python
 
 # create org .github baseline locally
-bash scripts/init-org-github.sh /home/sweetheart/projects/chungryongthon-dotgithub
+bash scripts/init-org-github.sh "$HOME/projects/chungryongthon-dotgithub"
+
+# optional custom output directory
+bash scripts/bootstrap.sh 2026-alt-dir --output-dir "$HOME/work"
 ```
 
 This creates:
@@ -97,7 +100,7 @@ Initialize an org-level `.github` repository:
 gh repo create "umc-hackaton-4team/.github" --public
 
 # scaffold files locally
-bash scripts/init-org-github.sh /home/sweetheart/projects/umc9-dotgithub
+bash scripts/init-org-github.sh "$HOME/projects/umc9-dotgithub"
 
 # then copy/commit into the cloned .github repo
 ```

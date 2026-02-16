@@ -45,7 +45,10 @@ bash scripts/bootstrap.sh 2026-umc10-teamx --backend nest
 bash scripts/bootstrap.sh 2026-ai-night --backend fastapi
 
 # org .github skeleton
-bash scripts/init-org-github.sh /home/sweetheart/projects/my-org-dotgithub
+bash scripts/init-org-github.sh "$HOME/projects/my-org-dotgithub"
+
+# optional custom output directory
+bash scripts/bootstrap.sh 2026-alt-dir --output-dir "$HOME/work"
 ```
 
 ## Open Source Usage
